@@ -6,14 +6,15 @@ type Props = Task & {
 };
 
 export const Item = (props: Props) => {
+  if (props.header.length === 0 || props.header.length > 32) throw new Error('длина заголовка должна быть от 1 до 32 символов');
+
   return (
     <li className="item-wrapper">
-      <input
-        type="checkbox"
-        id={props.id}
-        defaultChecked={props.done}
-      />
-      <label htmlFor={props.id} onClick={() => props.onToggle(props.id)}>
+      <input type="checkbox" id={props.id} defaultChecked={props.done} />
+      <label
+        data-testid="item label"
+        htmlFor={props.id}
+        onClick={() => props.onToggle(props.id)}>
         {props.done ? <s>{props.header}</s> : props.header}
       </label>
       <DeleteButton

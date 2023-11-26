@@ -1,11 +1,10 @@
-import { prettyDOM, render, screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { App } from 'src/App';
 import ue from '@testing-library/user-event';
 
 const userEvent = ue.setup({
   advanceTimers: jest.advanceTimersByTime,
 });
-
 
 describe('список задач', () => {
   // не содержит выполненные задачи
