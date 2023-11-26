@@ -12,7 +12,6 @@ export const Item = (props: Props) => {
     <li className="item-wrapper">
       <input type="checkbox" id={props.id} defaultChecked={props.done} />
       <label
-        data-testid="item label"
         htmlFor={props.id}
         onClick={() => props.onToggle(props.id)}>
         {props.done ? <s>{props.header}</s> : props.header}

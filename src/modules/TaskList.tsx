@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Empty } from "src/components/Empty";
 import { List } from "src/components/List";
-import { deleteTask, filterEnabledSelector, tasksSelector, toggleTask } from "src/store/taskSlice";
+import { deleteTask, filterEnabledSelector, tasksSelector, toggleTask, uncompleteCount } from "src/store/taskSlice";
+
+const UNCOMPLETE_COUNT_LIMIT = 10;
 
 export const TaskList = () => {
   const items = useSelector(tasksSelector);
   const filtered = useSelector(filterEnabledSelector);
-
+  const uncompleteTasks = useSelector(uncompleteCount);
   
   const dispatch = useDispatch();
   
@@ -27,6 +29,7 @@ export const TaskList = () => {
         items={renderedTasks}
         onDelete={handleDelete}
         onToggle={handleToggle}
+        isMaxUndone={uncompleteTasks >= UNCOMPLETE_COUNT_LIMIT}
       />
     </>
   ) : (

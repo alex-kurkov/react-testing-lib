@@ -78,7 +78,7 @@ describe('Элемент списка задач', () => {
     const onToggle = jest.fn();
     render(<Item {...undoneItem} onDelete={onDelete} onToggle={onToggle} />);
 
-    const headerEl = screen.getByTestId('item label');
+    const headerEl = screen.getByText(/купить/i);
     const toggleEl = screen.getByRole('checkbox');
 
     expect(toggleEl).not.toBeChecked();
